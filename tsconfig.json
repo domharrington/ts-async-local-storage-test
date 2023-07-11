@@ -1,5 +1,22 @@
 {
+  "extends": "ts-node/node14/tsconfig.json",
+  "ts-node": {
+    "swc": true
+  },
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2021"],
+    "moduleResolution": "node",
+    "noErrorTruncation": true,
+    "noImplicitAny": false, // @todo Remove this when we enable strict mode.
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": false, // Not running in strict mode until we have better type safety .
+    "target": "ES2021"
   }
 }
