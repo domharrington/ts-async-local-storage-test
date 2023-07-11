@@ -1,17 +1,15 @@
 const assert = require('assert');
 const { AsyncLocalStorage } = require('async_hooks');
 
-class LocalStorage extends AsyncLocalStorage {
-  getName() {
-    const store = this.getStore();
-    return store || 'non-staging'; // default to the dbName
-  }
+const storage = new AsyncLocalStorage();
+
+function getDbName() {
+  return storage.getStore() || 'non-staging';
 }
 
-const storage = new LocalStorage();
-console.log(storage.getName());
-assert.equal(storage.getName(), 'non-staging');
+console.log(getDbName());
+assert.equal(getDbName(), 'non-staging');
 
 storage.enterWith('staging')
-console.log(storage.getName());
-assert.equal(storage.getName(), 'staging');
+console.log(getDbName());
+assert.equal(getDbName(), 'staging');
