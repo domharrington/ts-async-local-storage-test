@@ -1,3 +1,5 @@
+"use strict";
+
 const assert = require('assert');
 const { AsyncLocalStorage } = require('async_hooks');
 
